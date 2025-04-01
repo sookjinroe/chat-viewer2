@@ -12,7 +12,12 @@ fetch('gpt-chat.csv')
           const div = document.createElement('div');
           div.classList.add('message');
           div.classList.add(msg.participant === 'User' ? 'user' : 'ai');
-          div.innerText = msg.message;
+
+          const inner = document.createElement('div');
+          inner.classList.add('content');
+          inner.innerHTML = marked.parse(msg.message);
+
+          div.appendChild(inner);
           container.appendChild(div);
         });
       }
